@@ -7,8 +7,8 @@ index b8eb666..9a623cd 100644
  /*
  #cgo solaris LDFLAGS: -L /opt/local/lib -lpcap
 -#cgo linux LDFLAGS: -lpcap
-+#cgo linux CFLAGS: -I/opt/datadog-agent/embedded/include
-+#cgo linux LDFLAGS: /opt/datadog-agent/embedded/lib/libpcap.a
++#cgo linux CFLAGS: -I/opt/stackstate-agent/embedded/include
++#cgo linux LDFLAGS: /opt/stackstate-agent/embedded/lib/libpcap.a
  #cgo dragonfly LDFLAGS: -lpcap
  #cgo freebsd LDFLAGS: -lpcap
  #cgo openbsd LDFLAGS: -lpcap
