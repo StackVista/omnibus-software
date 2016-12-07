@@ -27,6 +27,7 @@ version "1.2.8" do
 end
 
 source url: "http://zlib.net/zlib-#{version}.tar.gz"
+#source url: "http://downloads.sourceforge.net/project/libpng/zlib/#{version}/zlib-#{version}.tar.gz"
 
 relative_path "zlib-#{version}"
 
