@@ -1,11 +1,10 @@
 name "kafka-python"
-default_version "1.2.5"
-
+default_version "1.3.1"
 
 dependency "python"
 dependency "pip"
 
 build do
   ship_license "Apachev2"
-  command "#{install_dir}/embedded/bin/pip install --install-option=\"--install-scripts=#{install_dir}/bin\" #{name}==#{version}"
+  pip "install --install-option=\"--install-scripts=#{windows_safe_path(install_dir)}/bin\" #{name}==#{version}"
 end

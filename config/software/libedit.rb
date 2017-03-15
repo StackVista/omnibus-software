@@ -29,11 +29,12 @@ version "20130712-3.1" do
   source md5: "0891336c697362727a1fa7e60c5cb96c"
 end
 
-source url: "http://www.thrysoee.dk/editline/libedit-#{version}.tar.gz"
+source url: "http://www.thrysoee.dk/editline/libedit-#{version}.tar.gz",
+       :extract => :seven_zip
 
 relative_path "libedit-#{version}"
 
-env = case ohai['platform']
+env = case ohai["platform"]
       when "aix"
         {
           "CC" => "xlc -q64",
@@ -51,7 +52,7 @@ env = case ohai['platform']
           "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include -I#{install_dir}/embedded/include/ncurses",
           "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include -I#{install_dir}/embedded/include/ncurses",
           "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
-          "LD_OPTIONS" => "-R#{install_dir}/embedded/lib"
+          "LD_OPTIONS" => "-R#{install_dir}/embedded/lib",
         }
       end
 
@@ -59,11 +60,11 @@ build do
   ship_license "https://gist.githubusercontent.com/remh/d001e1be55cd07a88550/raw/742f005f8f9c744a4c7c8b2a0e6c3018546d6d0c/libedit.LICENSE"
   # The patch is from the FreeBSD ports tree and is for GCC compatibility.
   # http://svnweb.freebsd.org/ports/head/devel/libedit/files/patch-vi.c?annotate=300896
-  if ohai['platform'] == "freebsd"
+  if ohai["platform"] == "freebsd"
     patch :source => "freebsd-vi-fix.patch"
   end
   command ["./configure",
-           "--prefix=#{install_dir}/embedded"
+           "--prefix=#{install_dir}/embedded",
            ].join(" "), :env => env
   command "make -j #{workers}", :env => env
   command "make -j #{workers} install"
