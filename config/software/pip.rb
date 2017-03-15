@@ -16,16 +16,23 @@
 #
 
 name "pip"
-default_version "6.1.1"
+
+default_version "8.1.2"
 
 dependency "setuptools"
 
-source :url => "https://pypi.python.org/packages/source/p/pip/pip-#{version}.tar.gz",
-       :md5 => '6b19e0a934d982a5a4b798e957cb6d45'
+source :url => "https://github.com/pypa/pip/archive/#{version}.tar.gz",
+       :sha256 => "8dae1fb72e29c2b6ff6ed267861179216bf98d3bda6d30e527dbed0db5ac7e1d",
+       :extract => :seven_zip
 
 relative_path "pip-#{version}"
 
 build do
   ship_license "https://raw.githubusercontent.com/pypa/pip/develop/LICENSE.txt"
-  command "#{install_dir}/embedded/bin/python setup.py install --prefix=#{install_dir}/embedded"
+  if ohai["platform"] == "windows"
+    command "\"#{windows_safe_path(install_dir)}\\embedded\\python.exe\" setup.py install "\
+            "--prefix=\"#{windows_safe_path(install_dir)}\\embedded\""
+  else
+    command "#{install_dir}/embedded/bin/python setup.py install --prefix=#{install_dir}/embedded"
+  end
 end

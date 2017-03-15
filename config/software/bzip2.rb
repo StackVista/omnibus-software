@@ -18,6 +18,8 @@
 # This library object is required for building Python with the bz2 module,
 # and should be picked up automatically when building Python.
 
+# This is a Linux/OSX only DSL
+
 name "bzip2"
 default_version "1.0.6"
 
@@ -29,19 +31,19 @@ source :url => "http://www.bzip.org/#{version}/#{name}-#{version}.tar.gz",
 
 relative_path "#{name}-#{version}"
 
-prefix="#{install_dir}/embedded"
-libdir="#{prefix}/lib"
+prefix = "#{install_dir}/embedded"
+libdir = "#{prefix}/lib"
 
 env = {
   "LDFLAGS" => "-L#{libdir} -I#{prefix}/include",
   "CFLAGS" => "-L#{libdir} -I#{prefix}/include -fPIC",
-  "LD_RUN_PATH" => libdir
+  "LD_RUN_PATH" => libdir,
 }
 
 build do
   ship_license "https://gist.githubusercontent.com/remh/227fefddabefc998235f/raw/cc614178cf79580e04671c4d6acfbe95028b1842/bzip2.LICENSE"
-  patch :source => 'makefile_take_env_vars.patch'
-  patch :source => 'soname_install_dir.patch' if ohai['platform_family'] == 'mac_os_x' 
+  patch :source => "makefile_take_env_vars.patch"
+  patch :source => "soname_install_dir.patch" if ohai["platform_family"] == "mac_os_x"
   command "make PREFIX=#{prefix} VERSION=#{version}", :env => env
   command "make PREFIX=#{prefix} VERSION=#{version} -f Makefile-libbz2_so", :env => env
   command "make install VERSION=#{version} PREFIX=#{prefix}", :env => env
