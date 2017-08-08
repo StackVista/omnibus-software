@@ -5,6 +5,7 @@ dependency "openssl"
 dependency "python"
 dependency "pip"
 dependency "libffi"
+dependency "cryptography"
 
 build do
   ship_license "https://raw.githubusercontent.com/pyca/pyopenssl/master/LICENSE"
