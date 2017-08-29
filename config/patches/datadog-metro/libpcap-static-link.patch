@@ -2,8 +2,8 @@ diff --git a/pcap/pcap.go b/pcap/pcap.go
 index b8eb666..9a623cd 100644
 --- a/pcap/pcap.go
 +++ b/pcap/pcap.go
-@@ -9,11 +9,12 @@ package pcap
- 
+@@ -9,12 +9,13 @@ package pcap
+
  /*
  #cgo solaris LDFLAGS: -L /opt/local/lib -lpcap
 -#cgo linux LDFLAGS: -lpcap

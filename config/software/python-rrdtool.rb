@@ -4,7 +4,7 @@ dependency "python"
 
 build do
   ship_license "https://raw.githubusercontent.com/oetiker/rrdtool-1.x/master/COPYRIGHT"
-  
+
   if ohai['platform_family'] == 'debian'
     command "curl -O http://dd-agent.s3.amazonaws.com/python-rrdtool/deb/#{ohai['kernel']['machine']}/rrdtool.so", :cwd => "#{install_dir}/embedded/lib/python2.7/"
   elsif ohai['platform_family'] == 'rhel'
@@ -16,7 +16,7 @@ build do
    end
    command "make", :cwd => "/tmp/ExtUtils-MakeMaker-6.31"
    command "make install", :cwd => "/tmp/ExtUtils-MakeMaker-6.31"
-   command "curl -O -L http://oss.oetiker.ch/rrdtool/pub/rrdtool-#{version}.tar.gz", :cwd => "/opt/"
+   command "curl -O https://oss.oetiker.ch/rrdtool/pub/rrdtool-#{version}.tar.gz", :cwd => "/opt/"
    command "tar -xzvf rrdtool-#{version}.tar.gz", :cwd => "/opt/"
    command "./configure", :cwd => "/opt/rrdtool-#{version}", :env => {"PKG_CONFIG_PATH" => "/usr/lib/pkgconfig/"}
    command "make", :cwd => "/opt/rrdtool-#{version}", :env => {"PKG_CONFIG_PATH" => "/usr/lib/pkgconfig/"}
@@ -25,5 +25,5 @@ build do
 
 
   end
-  
+
 end
