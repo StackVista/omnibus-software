@@ -33,7 +33,7 @@ source url: "http://dl.bintray.com/oneclick/rubyinstaller/ruby-#{version}-i386-m
 build do
   # Robocopy's return code is 1 if it succesfully copies over the
   # files and 0 if the files are already existing at the destination
-  command "robocopy . #{windows_safe_path(install_dir)}\\embedded\\ /MIR", :returns => [0, 1]
+  command "XCOPY /YEH . #{windows_safe_path(install_dir)}\\embedded\\ /MIR"
 
   # Ruby 2.X dl.rb gives an annoying warning message on Windows:
   # DL is deprecated, please use Fiddle
@@ -43,7 +43,7 @@ build do
   # => warn "DL is deprecated, please use Fiddle"
   if version.start_with? "2"
     block do
-      require 'digest/md5'
+      require "digest/md5"
 
       dl_path = File.join(install_dir, "embedded/lib/ruby/2.0.0/dl.rb")
       if Digest::MD5.hexdigest(File.read(dl_path)) == "78c185a3fcc7b5e2c3db697c85110d8f"
