@@ -6,7 +6,6 @@ relative_path "flex-#{version}"
 source :url => "https://downloads.sourceforge.net/project/flex/flex-#{version}.tar.gz",
        :md5 => "5724bcffed4ebe39e9b55a9be80859ec"
 
-
 env = with_standard_compiler_flags()
 
 build do

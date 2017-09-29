@@ -1,10 +1,13 @@
 name "requests"
-default_version "2.6.2"
+default_version "2.11.1"
 
 dependency "python"
 dependency "pip"
+dependency "pyopenssl"
 
 build do
   ship_license "https://raw.githubusercontent.com/kennethreitz/requests/master/LICENSE"
-  command "#{install_dir}/embedded/bin/pip install --install-option=\"--install-scripts=#{install_dir}/bin\" #{name}==#{version}"
+  pip "install --install-option=\"--install-scripts="\
+      "#{windows_safe_path(install_dir)}/bin\" "\
+      "#{name}==#{version}"
 end

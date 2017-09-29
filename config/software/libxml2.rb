@@ -16,7 +16,7 @@
 #
 
 name "libxml2"
-default_version "2.9.1"
+default_version "2.9.4"
 
 dependency "zlib"
 dependency "libiconv"
@@ -28,6 +28,10 @@ end
 
 version "2.9.1" do
   source md5: "9c0cfef285d5c4a5c80d00904ddab380"
+end
+
+version "2.9.4" do
+  source sha256: "ffb911191e509b966deb55de705387f14156e1a56b21824357cdf0053233633c"
 end
 
 source url: "ftp://xmlsoft.org/libxml2/libxml2-#{version}.tar.gz"
@@ -44,9 +48,9 @@ build do
   env = {
     "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
     "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
-    "LD_RUN_PATH" => "#{install_dir}/embedded/lib"
+    "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
   }
   command cmd, :env => env
-  command "make -j #{workers}", :env => {"LD_RUN_PATH" => "#{install_dir}/embedded/lib"}
-  command "make install", :env => {"LD_RUN_PATH" => "#{install_dir}/embedded/lib"}
+  command "make -j #{workers}", :env => { "LD_RUN_PATH" => "#{install_dir}/embedded/lib" }
+  command "make install", :env => { "LD_RUN_PATH" => "#{install_dir}/embedded/lib" }
 end
