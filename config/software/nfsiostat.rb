@@ -1,5 +1,5 @@
 #
-# Copyright:: Copyright (c) 2013-2014 Chef Software, Inc.
+# Copyright:: Copyright (c) 2012-2014 Chef Software, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,12 +15,16 @@
 # limitations under the License.
 #
 
-name "sphinx"
-default_version "1.1.3"
+name "nfsiostat"
+default_version "nfs-utils-2-1-1"
 
-dependency "pip"
-dependency "pygments"
+source :git => "git://git.linux-nfs.org/projects/steved/nfs-utils.git"
+
+relative_path "nfs-utils"
 
 build do
-  pip "install --build #{project_dir} #{name}==#{version}"
+  mkdir "#{install_dir}/embedded/sbin/"
+  command "sed -i 's:#!/usr/bin/python:#!/opt/datadog-agent/embedded/bin/python:' ./tools/nfs-iostat/nfs-iostat.py"
+  command "cp ./tools/nfs-iostat/nfs-iostat.py #{install_dir}/embedded/sbin/nfsiostat"
+  command "chmod +x #{install_dir}/embedded/sbin/nfsiostat"
 end
