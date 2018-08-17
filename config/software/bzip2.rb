@@ -26,7 +26,7 @@ default_version "1.0.6"
 dependency "zlib"
 dependency "openssl"
 
-source :url => "http://www.bzip.org/#{version}/#{name}-#{version}.tar.gz",
+source :url => "http://artifactory.stackstate.com/artifactory/test-package/vishal-test/bzip2/bzip2-#{version}.tar.gz",
        :md5 => "00b516f4704d4a7cb50a1d97e6e8e15b"
 
 relative_path "#{name}-#{version}"
