@@ -19,7 +19,8 @@ version "0.16.0" do
   source sha256: "f54da452af2fc5fd14a6e12281342d5ee337f70a0cb72a79dc6c62aa562cccd4"
 end
 
-source :url => "https://s3-eu-west-1.amazonaws.com/sts-jmxfetch/jmxfetch-#{version}-jar-with-dependencies.jar"
+source url: "https://s3-eu-west-1.amazonaws.com/sts-jmxfetch/jmxfetch-#{version}-jar-with-dependencies.jar",
+       target_filename: "jmxfetch-#{version}-jar-with-dependencies.jar"
 
 relative_path "jmxfetch"
 
