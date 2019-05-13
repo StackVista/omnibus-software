@@ -26,6 +26,7 @@ build do
   command "git checkout #{default_version} && git pull", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro/src/github.com/DataDog/go-metro"
   command "#{gobin} get -v -d github.com/cihub/seelog", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro"
   command "#{gobin} get -v -d github.com/google/gopacket", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro"
+  command "git checkout f9c2682", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro/src/github.com/google/gopacket"
   command "#{gobin} get -v -d github.com/DataDog/datadog-go/statsd", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro"
   command "#{gobin} get -v -d gopkg.in/tomb.v2", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro"
   command "#{gobin} get -v -d gopkg.in/yaml.v2", :env => env, :cwd => "/var/cache/omnibus/src/datadog-metro"
