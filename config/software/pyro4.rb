@@ -3,6 +3,7 @@ default_version "4.36"
 
 dependency "python"
 dependency "pip"
+dependency "serpent"
 
 build do
   ship_license "https://raw.githubusercontent.com/irmen/Pyro4/master/LICENSE"
