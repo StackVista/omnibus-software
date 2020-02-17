@@ -4,7 +4,7 @@ default_version "2.6.0"
 relative_path "flex-#{version}"
 
 source :url => "https://downloads.sourceforge.net/project/flex/flex-#{version}.tar.gz",
-       :md5 => "5724bcffed4ebe39e9b55a9be80859ec"
+       :md5 => "afd33cb888461aae3bfd05b80c9e42a8"
 
 env = with_standard_compiler_flags()
 
