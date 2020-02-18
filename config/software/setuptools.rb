@@ -16,7 +16,7 @@
 #
 
 name "setuptools"
-default_version "28.8.0"
+default_version "44.0.0"
 
 dependency "python"
 
