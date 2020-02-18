@@ -23,7 +23,7 @@ dependency "python"
 relative_path "setuptools-#{version}"
 
 source :url => "https://github.com/pypa/setuptools/archive/v#{version}.tar.gz",
-       :sha256 => "d3b2c63a5cb6816ace0883bc3f6aca9e7890c61d80ac0d608a183f85825a7cc0"
+       :sha256 => "219997615bf2f12d86aca0ab3469cb3853f7694af226f3f84e8703cb15e23e2c"
 
 build do
   python_path = "#{install_dir}/embedded/bin/python"

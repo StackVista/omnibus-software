@@ -22,7 +22,7 @@ default_version "20.0.2"
 dependency "setuptools"
 
 source :url => "https://github.com/pypa/pip/archive/#{version}.tar.gz",
-       :sha256 => "8dae1fb72e29c2b6ff6ed267861179216bf98d3bda6d30e527dbed0db5ac7e1d",
+       :sha256 => "00bdc118df4552f654a5ccf0bd3ff1a7d101ee7d7ac899fe9a752363b3f2f070",
        :extract => :seven_zip
 
 relative_path "pip-#{version}"
