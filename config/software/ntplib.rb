@@ -12,7 +12,6 @@ build do
         "#{name}==#{version}"
   else
     pip "install "\
-        "--install-option=\"--install-scripts=#{install_dir}/bin\" "\
         "#{name}==#{version}", :cwd => "/tmp"
   end
 end
